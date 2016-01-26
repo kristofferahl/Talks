@@ -1,0 +1,701 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Git</title>
+
+		<meta name="author" content="Kristoffer Ahl">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/gitflow.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+		<div id="logo">
+			<img src="img/dotnetmentor-logo.png" width="200px" />
+		</div>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section id="intro">
+					<h1>Git</h1>
+					<h3>Distributed Version Control System</h3>
+					<h4>From 'Zero' to 'Senior Git chief ninja scientist master engineer' in no time</h4>
+					<p>
+						<small>Av <a href="http://77dynamite.com">Kristoffer Ahl</a> / <a href="http://twitter.com/kristofferahl">@kristofferahl</a><br /><a href="http://www.dotnetmentor.se">www.dotnetmentor.se</a></small>
+					</p>
+
+					<aside class="notes" data-markdown>
+						- Kristoffer Ahl
+						- Konsult på Dotnet Mentor
+						- Ett litet konsultbolag bestående av 6 personer med fokus på mentorskap
+					</aside>
+				</section>
+
+				<section>
+					<h2>Agenda</h2>
+					<ul>
+						<li>Git</li>
+						<li>Mer Git</li>
+						<li>Ännu mer Git</li>
+						<li>Länkar</li>
+						<li>Frågor</li>
+					</ul>
+
+					<aside class="notes" data-markdown>
+						- Git
+						- Mer git
+						- Ännu mer git
+						- Länkar
+						- Frågor
+					</aside>
+				</section>
+
+				<section>
+					<h2>Git <img src="img/git-icon.png" /></h2>
+					<h3 class="fragment">"Source control the way it was meant to be"</h3>
+					<p class="fragment">
+						- Linus Torvalds<br />
+						<img src="img/linus.jpg"><br />
+						<cite><a href="http://www.flickr.com/photos/51035608727@N01/2236111019/in/photolist-4pADUg-4JMGS5-5A8rRc-5PpD5n-5U4D58-5UoNTc-5UoVJK-5Uti6q-5UuiX2-5UuE2B-5Uy18A-5UyEJu-5UyHMf-5UyJ2G-5UTHGv-5UTLvM-5UY5Ub-5ZiAfZ-5ZYAon-6Ky2vw-71BBbk-769Bui-79bfqe-7iXoLv-7n3rVc-7n3rYc-7n7kx5-7n7WGh-7pqJKg-7pqJLz-7puBNq-bALdha-aG1LnD-aG1M7e-aG1MSv-aG1NCk-dthSzg-dthV9k-dti7v7-dti5Zq-dti6mU-dti6JY-dthRk8-dthT6k-dthRNV-dti4eC-dti52E-dthRtv-aRTz5k-8xaX1Q-91QsCQ">Alex Dawson</a> - Flickr - Creative Commons</cite>
+					</p>
+
+					<aside class="notes" data-markdown>
+						- Vad är då Git?
+						- "Directed acyclic graph"
+							- Om man vill krångla till det!
+						- "Source control the way it was meant to be"
+							- Iaf. enligt Linus Torvalds....
+					</aside>
+				</section>
+
+				<section>
+					<h2 class="c2">Git</h2>
+					<p>Git skapades 2005 av Linus Torvalds för att hantera<br />källkoden till Linuxkärnan</p>
+
+					<aside class="notes" data-markdown>
+						- ... som år 2005 skapade Git för att hantera källkoden till Linuxkärnan
+						- Linus ansåg att inget av de alternativ som fanns räckte till vad gäller funktion och prestanda
+						- Vid den tiden hade kodbasen för linuxkärnan växt sig väldigt stor...
+					</aside>
+				</section>
+
+				<section>
+					<h2 class="c3">Mål</h2>
+					<ol>
+						<li class="fragment">Snabbt</li>
+						<li class="fragment">Starkt stöd för icke-linjär utveckling</li>
+						<li class="fragment">Fullt ut distribuerat</li>
+						<li class="fragment">Kunna hantera stora projekt</li>
+					</ol>
+
+					<aside class="notes" data-markdown>
+						- Git skapades efter 4 högt prioriterade mål
+						- Snabbt
+						- Starkt stöd för icke-linjär utveckling
+							- Tusentals paralella brancher
+						- Fullt ut distribuerat
+						- Kunna hantera stora projekt
+							- t.ex. Linux kärnan
+					</aside>
+				</section>
+
+				<section>
+					<section>
+						<h2 class="c4">Git versus ...</h2>
+
+						<aside class="notes" data-markdown>
+							- Hur skiljer sig git egentligen mot andra versionshanteringssystem
+						</aside>
+					</section>
+					<section>
+						<h2>Git är en key/value store</h2>
+						<p class="fragment">Allt i git lagras som olika typer av objekt</p>
+
+						<aside class="notes" data-markdown>
+							- Git är i botten en key/value store
+								- Allt i git lagras som olika typer av objekt
+									- Dessa objekt knyts samman i form av en commit
+								- ... PIL NER
+						</aside>
+					</section>
+					<section>
+						<h2>Varje commit identifieras med en hash (SHA-1)</h2>
+						<h3>som unikt identifierar den och dess förälder</h3>
+
+						<ul>
+							<li class="fragment">Commit object</li>
+							<li class="fragment">Tree object</li>
+							<li class="fragment">Blob object</li>
+						</ul>
+
+						<aside class="notes" data-markdown>
+							- Varje commit identifieras med en hash (SHA-1)
+								- som unikt identifierar den och dess förälder
+								- En commit består av:
+									- Commit object = Referens till dess förälder, dess author och commit message, samt referens till ett tree object...
+									- Tree object = Vilka filer (namn och sha)
+									- Blob object = Filens innehåll
+								- ... PIL NER
+						</aside>
+					</section>
+					<section>
+						<h2>Den stora skillnaden mellan Git och andra VCS ...</h2>
+						<h3 class="fragment">... är det sätt som Git tänker på dess data</h3>
+
+						<aside class="notes" data-markdown>
+							- ... PIL NER
+						</aside>
+					</section>
+					<section>
+						<h2>Subversion med vänner</h2>
+						<ul>
+							<li class="fragment">Håller en lista med filer och dess ändringarna över tid</li>
+							<li class="fragment">Varje version sparas som en diff i förhållande till den föregående</li>
+						</ul>
+
+						<aside class="notes" data-markdown>
+							- Subversion med vänner
+								- Håller en lista med filer och dess ändringarna över tid
+								- Varje version sparas som en diff i förhållande till den föregående
+									- För att kunna gå framåt eller bakåt i historiken måste ändringar appliceras eller tas bort
+							- ... PIL NER
+						</aside>
+					</section>
+					<section>
+						<h2>Git</h2>
+						<ul>
+							<li class="fragment">Gör snapshots av hela repositoryn</li>
+							<li class="fragment">Om en fil inte ändrats, används en referens till den senast kända versionen</li>
+						</ul>
+
+						<aside class="notes" data-markdown>
+							- Git gör en snapshots av hela repositoryn
+								- Snapshots, är ungefär som "save points" i ett konsoll-spel
+							- Om en fil inte ändrats från en commit till en annan, används en referens till den senast kända versionen
+								- Hela filen lagras (inte skillnaden)
+								- Git kan därför väldigt snabbt hoppa framåt och bakåt i historiken eftersom ...
+								- ... allt git behöver göra är hämta ut den senaste versionen av en fil vid just det tillfället
+
+							- Tillbaka till målen (distribuerat, icke-linjär utveckling)
+							- ... PIL HÖGER
+						</aside>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2 class="c1">Git &#9829; Distribuerat = Sant</h2>
+
+						<aside class="notes" data-markdown>
+							- Distribuerat
+								- Git är ett distribuerat versionshanteringssystem
+								- Vilket innebär att ...
+								- ... PIL NER
+						</aside>
+					</section>
+					<section>
+						<h3>Decentralized VCS</h3>
+						<p><img src="img/decentralized.png" width="500px" /></p>
+						<p>Har inget centralt arkiv (repository)</p>
+
+						<aside class="notes" data-markdown>
+							- Inget centralt arkiv/repository finns
+								- Ingen repository är viktigare än den andra
+								- Alla kan hämta och dela ändringar direkt med varandra
+								- Till skillnad från ...
+								- ... PIL NER
+						</aside>
+					</section>
+					<section>
+						<h3>Centralized VCS</h3>
+						<p><img src="img/centralized.png" width="500px" /></p>
+						<p>Har ett centralt arkiv (repository)</p>
+
+						<aside class="notes" data-markdown>
+							- ... ett Centralized VCS där man hämtar och delar ändringar via en central repository
+							- Detta är givetvis en förenklad beskrivning av skillnaderna
+								- ... PIL NER
+						</aside>
+					</section>
+					<section>
+						<h3>Decentralized VCS + Centralized</h3>
+						<p><img src="img/centralized-decentralized.png" width="500px" /></p>
+
+						<aside class="notes" data-markdown>
+							- I git kan vissa repositories anses viktigare än andra
+								- T.ex. den repository där du publicerar din öppna källkod
+								- T.ex. där den officiella Linuxversionen publiceras
+								- Detta är inte av tekniska skäl utan är en rent social konvention
+							- ... PIL NER
+						</aside>
+					</section>
+					<section>
+						<h3>Varje utcheckning är en fullständig kopia</h3>
+						<pre><code class="bash">git clone https://github.com/kristofferahl/FluentSecurity.git</code></pre>
+
+						<aside class="notes" data-markdown>
+							- Varje utcheckning av en repository är en fullständig kopia
+								- Alla filer och historik sedan tidernas begynnelse finns med
+								- ... PIL NER
+						</aside>
+					</section>
+					<section>
+						<h3>Offline</h3>
+						<p>
+							<img src="img/hell-yeah.jpg" /><br />
+							<cite><a href="http://www.flickr.com/photos/dr_e_g/4457491279/in/photolist-7MTNRV-dCifx1-9EpRRT-7QDvfr-ahCGB9-8EpBK9-8EpBdE-8EmsCV-8EmsoX-8EpAUy-8EpC4o-8EmsjX-8EmsUD-8EpBTJ-8Emsog-8EmsnD-8EmrL6-8EmrLP-8EmrJa-8EpAVh-8EmsTi-8EmrKc-8EpBR3-8EpBtA-8EmsSa-8EmsvV-8Ems3T-8EpBeb-8Emsh8-8EpBpy-8Ems5r-8EmrQc-8EpByQ-8Ems9x-8EpBJh-8EmrY4-8EpBVb-8Ems2t-8EpB3U-8EmsVZ-8EmsqX-8EmsPt-8EpBRY-8EpB9G-8EpB1C-8EmsQK-8Ems8x-cv1eGd-acEkZv-acHcBG-acEpUB/">Dr EG</a> - Flickr - Creative Commons</cite>
+						</p>
+
+						<aside class="notes" data-markdown>
+							- Offline
+								- Koda
+								- Skapa commits
+								- Göra diff-operationer
+								- Titta på loggar
+								- etc...
+								- ... PIL HÖGER
+						</aside>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2 class="c2">Git &#9829; Branching = Sant</h2>
+<pre><code class="bash">git checkout -b feature/create-invoice
+
+git branch
+* feature/create-invoice
+  master</code></pre>
+
+						<aside class="notes" data-markdown>
+							- Brancher har ni säkert alla hört talas om
+							- Hur mycket beror troligtvis på hur enkelt det är att skapa och merga dom i ert VCS
+							- ... PIL NER
+						</aside>
+					</section>
+					<section>
+						<h2>Branching är ett kärnkoncept i Git</h2>
+						<h3>Inte ett sidospår!</h3>
+
+						<aside class="notes" data-markdown>
+							- Branching är ett kärnkoncept i Git, inte ett sidospår
+								- Detta gör att de är väldigt enkla att skapa, uppdatera, föra samman och ta bort
+								- Vidare medför det att brancher faktiskt används av de flesta som jobbar med git
+								- ... PIL NER
+						</aside>
+					</section>
+					<section>
+						<h2>En branch är en "label" som pekar på en commit</h2>
+
+						<aside class="notes" data-markdown>
+							- En branch i git är en "label" som pekar på en commit
+								- Detta är väldigt fint när man har en stor kodbas
+								- I många andra VCS är varje branch en komplett kopia av hela kodbasen och att slå samman brancher är klurigt
+									- Att skapa och merga en branch anses ofta vara en "dyr" eller "farlig" operation vilket leder till att brancher används så lite som möjligt
+								- Eftersom en branch i git bara är en label som pekar på en commit är det väldigt enkelt att återskapa en branch som du råkat ta bort
+								- ... PIL HÖGER
+						</aside>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2 class="c3">Terminologi</h2>
+
+						<aside class="notes" data-markdown>
+							- ... PIL NER
+						</aside>
+					</section>
+					<section>
+						<h2>Repository</h2>
+
+						<p class="fragment fade-out">"A collection of commits, and branches and tags to identify commits"</p>
+
+						<div class="fragment">
+						<p>En directory som i sin tur innehåller en .git directory</p>
+
+<pre><code>C:\Projects\MyProject
+ - .git
+</code></pre>
+						</div>
+
+						<aside class="notes" data-markdown>
+							- Repository
+								- "A collection of commits, and branches and tags to identify commits"
+								- Eller: En directory som i sin tur innehåller en .git folder
+								- .git som innehåller en HEAD fil
+								- ... PIL NER
+						</aside>
+					</section>
+					<section>
+						<h2>Working tree</h2>
+
+						<div class="fragment">
+						<p>"working directory"</p>
+
+<pre><code>C:\Projects\MyProject
+ - .git
+ - readme.md
+ - src
+   - packages.json
+   - server.js
+</code></pre>
+
+						</div>
+
+						<aside class="notes" data-markdown>
+							- Working tree
+								- Eller "working directory"
+								- De filer och underkataloger som finns på disk i din "repo" är en del av WT
+								- Vid "checkout" ändras innehållet i WT så att det representerar det state vi var i
+								- ... PIL NER
+						</aside>
+					</section>
+					<section>
+						<h2>Index</h2>
+
+						<p class="fragment">"staging area"</p>
+
+						<aside class="notes" data-markdown>
+							- Index
+								- Eller "staging area"
+								- Beskriver vad som kommer bli en del av nästa commit
+								- ... PIL NER
+						</aside>
+					</section>
+					<section>
+						<h2>Commit</h2>
+
+						<p class="fragment">"snapshot"</p>
+
+						<aside class="notes" data-markdown>
+							- Commit
+								- Är en snapshot av vad som fanns i en repository vid en specifik tidpunkt
+								- Kan även beskrivas som en "save point"
+								- En commit identifieras med en hash (SHA-1) som unikt identifierar den och dess förälder
+								- ... PIL NER
+						</aside>
+					</section>
+					<section>
+						<h2>Branch</h2>
+
+						<p class="fragment">En namngiven pekare till en commit</p>
+
+<pre class="fragment"><code>git branch
+
+ * develop
+   master
+   feature/a
+   feature/b
+</code></pre>
+
+						<aside class="notes" data-markdown>
+							- Branch
+								- Är en "label" eller namngiven pekare till en commit
+								- En fil där filnamnet är branchens namn och innehållet ett commit id (hash)
+								- ... PIL NER
+						</aside>
+					</section>
+					<section>
+						<h2>Tag</h2>
+
+						<p class="fragment">En namngiven pekare till en commit ...</p>
+						<p class="fragment">... som aldrig ändras</p>
+
+						<aside class="notes" data-markdown>
+							- Tag
+								- Är också en pekare till en commit
+								- Denna pekare ändras aldrig
+								- En fil där filnamnet är taggens namn och innehållet ett commit id (hash)
+								- ... PIL NER
+						</aside>
+					</section>
+					<section>
+						<h2>HEAD</h2>
+
+						<p class="fragment">"A symbolic name to describe the currently checked out commit. Often the topmost commit."</p>
+
+						<aside class="notes" data-markdown>
+							- HEAD
+								- En fil som definierar vad som är utcheckat
+								- Innehåller vanligtvis namnet på en branch
+								- Om innehållet är en commit hash = "Detached HEAD"
+								- ... PIL NER
+						</aside>
+					</section>
+					<section>
+						<h2>Remote</h2>
+
+						<p class="fragment">En referens till en annan repository</p>
+
+						<aside class="notes" data-markdown>
+							- Remote
+								- En referens till en annan repository
+								- Lokalt, network share, http
+								- ... PIL HÖGER
+						</aside>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2 class="c4">Git i vardagen</h2>
+
+						<aside class="notes" data-markdown>
+							- Git i vardagen
+								- ca. 10 commands är allt som behövs
+								- ... PIL NER
+						</aside>
+					</section>
+					<section>
+						<h2>0. init</h2>
+
+<pre><code class="bash">$ git init
+Initialized empty Git repository in C:/Develop/Talks.Git.Test/.git/</code></pre>
+
+						<aside class="notes" data-markdown>
+							- git init
+								- Skapar en git repository i den directory där kommandot körs
+								- En "master" branch skapas automatiskt
+								- ... PIL NER
+						</aside>
+					</section>
+					<section>
+						<h2>1. status</h2>
+
+<pre><code class="bash">$ git status
+On branch master
+
+Initial commit
+
+nothing to commit (create/copy files and use "git add" to track)</code></pre>
+
+						<aside class="notes" data-markdown>
+							- git status
+								- ... PIL NER
+						</aside>
+					</section>
+					<section>
+						<h2>2. add</h2>
+
+<pre><code class="bash">git add &lt;path&gt;
+git add -A
+git add .
+</code></pre>
+
+						<aside class="notes" data-markdown>
+							- git add
+								- `git add <pathspec>`
+								- Lägger till en fil eller filer
+								- `git add -A`
+								- Modifierar index så att det matchar working tree
+								- ... PIL NER
+						</aside>
+					</section>
+					<section>
+						<h2>3. rm</h2>
+
+<pre><code class="bash">git rm &lt;path&gt;
+git rm somedirectory/ -r
+</code></pre>
+
+						<aside class="notes" data-markdown>
+							- git rm
+								- Tar bort filer från working tree och från index
+								- ... PIL NER
+						</aside>
+					</section>
+					<section>
+						<h2>4. reset</h2>
+
+<pre><code class="bash">git reset</code></pre>
+
+						<aside class="notes" data-markdown>
+							- git reset
+								- ... PIL NER
+						</aside>
+					</section>
+					<section>
+						<h2>5. diff</h2>
+
+<pre><code class="bash">git diff</code></pre>
+
+						<aside class="notes" data-markdown>
+							- git diff
+								- ... PIL NER
+						</aside>
+					</section>
+					<section>
+						<h2>6. commit</h2>
+
+<pre><code class="bash">git commit</code></pre>
+
+						<aside class="notes" data-markdown>
+							- git commit
+								- ... PIL NER
+						</aside>
+					</section>
+					<section>
+						<h2>7. log</h2>
+
+<pre><code class="bash">git log</code></pre>
+
+						<aside class="notes" data-markdown>
+							- git log
+								- ... PIL NER
+						</aside>
+					</section>
+					<section>
+						<h2>8. checkout</h2>
+
+<pre><code class="bash">git checkout</code></pre>
+
+						<aside class="notes" data-markdown>
+							- git checkout
+								- ... PIL NER
+						</aside>
+					</section>
+					<section>
+						<h2>9. merge</h2>
+
+<pre><code class="bash">git merge</code></pre>
+
+						<aside class="notes" data-markdown>
+							- git merge
+								- ... PIL NER
+						</aside>
+					</section>
+					<section>
+						<h2>10. clone</h2>
+
+<pre><code class="bash">git clone</code></pre>
+
+						<aside class="notes" data-markdown>
+							- git clone
+								- ... PIL NER
+						</aside>
+					</section>
+					<section>
+						<h2>11. push</h2>
+
+<pre><code class="bash">git push</code></pre>
+
+						<aside class="notes" data-markdown>
+							- git push
+								- ... PIL NER
+						</aside>
+					</section>
+					<section>
+						<h2>12. pull</h2>
+
+<pre><code class="bash">git pull</code></pre>
+
+						<aside class="notes" data-markdown>
+							- git pull
+								- ... PIL NER
+						</aside>
+					</section>
+					<section>
+						<h2>För den late</h2>
+
+<pre><code class="bash">git help &lt;command&gt;</code></pre>
+
+						<aside class="notes" data-markdown>
+							- git help
+								- ... PIL HÖGER
+						</aside>
+					</section>
+				</section>
+
+				<section>
+					<h2 class="c1">Advanced stuff</h2>
+
+					<div data-markdown>
+					- .gitignore
+					- .gitconfig
+					- git gui
+					- gitk
+					- git fetch
+					- git clean -ndf
+					- git cherry-pick
+					- git rebase
+					- git rebase -i
+					- git reflog
+					- git revert
+					</div>
+				</section>
+
+				<section data-markdown>
+					## Länkar
+
+					- [http://nvie.com/posts/a-successful-git-branching-model/](http://nvie.com/posts/a-successful-git-branching-model/)
+					- [https://github.com/nvie/gitflow](https://github.com/nvie/gitflow)
+					- [http://try.github.com](http://try.github.com)
+					- [http://tom.preston-werner.com/2009/05/19/the-git-parable.html](http://tom.preston-werner.com/2009/05/19/the-git-parable.html)
+				</section>
+
+				<section>
+					<h1>THE END</h1>
+					<h2>Frågor på det?</h2>
+					<p>
+						<small><a href="http://77dynamite.com">Kristoffer Ahl</a> / <a href="http://twitter.com/kristofferahl">@kristofferahl</a><br /><a href="http://www.dotnetmentor.se">www.dotnetmentor.se</a></small>
+					</p>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
