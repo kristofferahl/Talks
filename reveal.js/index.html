@@ -41,7 +41,7 @@
 				<section id="intro">
 					<h1>Git</h1>
 					<h3>Distributed Version Control System</h3>
-					<h4>From 'Zero' to 'Senior Git chief ninja scientist master engineer' in no time</h4>
+					<h4>From 'Zero' to 'Full stack senior Git chief ninja scientist master engineer' in no time</h4>
 					<p>
 						<small>Av <a href="http://77dynamite.com">Kristoffer Ahl</a> / <a href="http://twitter.com/kristofferahl">@kristofferahl</a><br /><a href="http://www.dotnetmentor.se">www.dotnetmentor.se</a></small>
 					</p>
@@ -518,7 +518,7 @@ git add .
 						<h2>3. rm</h2>
 
 <pre><code class="bash">git rm &lt;path&gt;
-git rm somedirectory/ -r
+git rm &lt;directory&gt;/ -r
 </code></pre>
 
 						<aside class="notes" data-markdown>
@@ -530,7 +530,12 @@ git rm somedirectory/ -r
 					<section>
 						<h2>4. reset</h2>
 
-<pre><code class="bash">git reset</code></pre>
+<pre><code class="bash">git reset
+git reset --hard
+git reset &lt;commit&gt;
+git reset --hard &lt;commit&gt;
+git reset &lt;path&gt;
+git reset --hard &lt;path&gt;</code></pre>
 
 						<aside class="notes" data-markdown>
 							- git reset
@@ -540,7 +545,13 @@ git rm somedirectory/ -r
 					<section>
 						<h2>5. diff</h2>
 
-<pre><code class="bash">git diff</code></pre>
+<pre><code class="bash">git diff
+git diff HEAD
+git diff HEAD^
+git diff &lt;commit&gt;
+git diff &lt;branch&gt;
+git diff &lt;branch1&gt; &lt;branch2&gt;
+git diff --name-only</code></pre>
 
 						<aside class="notes" data-markdown>
 							- git diff
@@ -550,7 +561,9 @@ git rm somedirectory/ -r
 					<section>
 						<h2>6. commit</h2>
 
-<pre><code class="bash">git commit</code></pre>
+<pre><code class="bash">git commit -m &lt;msg&gt;
+git commit -am &lt;msg&gt;
+git commit --amend</code></pre>
 
 						<aside class="notes" data-markdown>
 							- git commit
@@ -560,7 +573,13 @@ git rm somedirectory/ -r
 					<section>
 						<h2>7. log</h2>
 
-<pre><code class="bash">git log</code></pre>
+<pre><code class="bash">git log
+git log &lt;branch&gt;
+git log &lt;commit&gt;
+git log --oneline
+git log --graph
+git log --decorate
+git log --oneline --graph --decorate</code></pre>
 
 						<aside class="notes" data-markdown>
 							- git log
@@ -570,7 +589,9 @@ git rm somedirectory/ -r
 					<section>
 						<h2>8. checkout</h2>
 
-<pre><code class="bash">git checkout</code></pre>
+<pre><code class="bash">git checkout &lt;branch&gt;
+git checkout -b &lt;branch&gt;
+git checkout -b &lt;branch&gt; &lt;start-point&gt;</code></pre>
 
 						<aside class="notes" data-markdown>
 							- git checkout
@@ -580,27 +601,52 @@ git rm somedirectory/ -r
 					<section>
 						<h2>9. merge</h2>
 
-<pre><code class="bash">git merge</code></pre>
+<pre><code class="bash">git merge &lt;branch&gt;
+git merge &lt;branch&gt; --no-ff
+git merge --no-commit
+git merge --abort
+git merge -s &lt;strategy&gt;</code></pre>
 
 						<aside class="notes" data-markdown>
 							- git merge
+								- Join two or more development histories together
 								- ... PIL NER
 						</aside>
 					</section>
 					<section>
 						<h2>10. clone</h2>
 
-<pre><code class="bash">git clone</code></pre>
+<pre><code class="bash">git clone &lt;remote-address&gt;</code></pre>
 
 						<aside class="notes" data-markdown>
 							- git clone
+								- Clone a repository into a new directory
 								- ... PIL NER
 						</aside>
 					</section>
 					<section>
-						<h2>11. push</h2>
+						<h2>11. remote</h2>
 
-<pre><code class="bash">git push</code></pre>
+<pre><code class="bash">git remote
+git remote -v
+git remote add &lt;name&gt; &lt;address&gt;
+git remote rm &lt;name&gt;</code></pre>
+
+						<aside class="notes" data-markdown>
+							- git remote
+								- git remote rm: All remote-tracking branches and configuration settings for the remote are removed.
+								- ... PIL NER
+						</aside>
+					</section>
+					<section>
+						<h2>12. push</h2>
+
+<pre><code class="bash">git push
+git push &lt;remote&gt; &lt;branch&gt;
+git push --all
+git push --tags
+git push -u &lt;remote&gt; --all
+git push -f</code></pre>
 
 						<aside class="notes" data-markdown>
 							- git push
@@ -608,9 +654,10 @@ git rm somedirectory/ -r
 						</aside>
 					</section>
 					<section>
-						<h2>12. pull</h2>
+						<h2>13. pull</h2>
 
-<pre><code class="bash">git pull</code></pre>
+<pre><code class="bash">git pull
+git pull &lt;remote&gt; &lt;branch&gt;</code></pre>
 
 						<aside class="notes" data-markdown>
 							- git pull
@@ -632,19 +679,28 @@ git rm somedirectory/ -r
 				<section>
 					<h2 class="c1">Advanced stuff</h2>
 
-					<div data-markdown>
+					<div style="line-height: 1.1em;" data-markdown>
 					- .gitignore
 					- .gitconfig
+					- hooks
 					- git gui
 					- gitk
 					- git fetch
+					- git branch
+					- git show
+					- git stash
 					- git clean -ndf
 					- git cherry-pick
 					- git rebase
 					- git rebase -i
 					- git reflog
 					- git revert
+					- git ...
 					</div>
+
+					<aside class="notes" data-markdown>
+						- git branch (-a / -d / -D / -m)
+					</aside>
 				</section>
 
 				<section data-markdown>
