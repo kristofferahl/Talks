@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>Git</title>
+		<title>Git from the ground up</title>
 
 		<meta name="author" content="Kristoffer Ahl">
 
@@ -41,7 +41,7 @@
 				<section id="intro">
 					<h1>Git</h1>
 					<h3>Distributed Version Control System</h3>
-					<h4>From 'Zero' to 'Full stack senior Git chief ninja scientist master engineer' in no time</h4>
+					<h4>From 'Zero'<br />to 'Full stack senior Git chief ninja scientist master engineer'<br />in no time</h4>
 					<p>
 						<small>Av <a href="http://77dynamite.com">Kristoffer Ahl</a> / <a href="http://twitter.com/kristofferahl">@kristofferahl</a><br /><a href="http://www.dotnetmentor.se">www.dotnetmentor.se</a></small>
 					</p>
@@ -49,7 +49,7 @@
 					<aside class="notes" data-markdown>
 						- Kristoffer Ahl
 						- Konsult på Dotnet Mentor
-						- Ett litet konsultbolag bestående av 6 personer med fokus på mentorskap
+						- Ett litet konsultbolag med fokus på mentorskap
 					</aside>
 				</section>
 
@@ -131,7 +131,13 @@
 					</section>
 					<section>
 						<h2>Git är en key/value store</h2>
-						<p class="fragment">Allt i git lagras som olika typer av objekt</p>
+						<p>Allt i git lagras som olika typer av objekt</p>
+
+						<ul>
+							<li class="fragment">Commit object</li>
+							<li class="fragment">Tree object</li>
+							<li class="fragment">Blob object</li>
+						</ul>
 
 						<aside class="notes" data-markdown>
 							- Git är i botten en key/value store
@@ -144,17 +150,17 @@
 						<h2>Varje commit identifieras med en hash (SHA-1)</h2>
 						<h3>som unikt identifierar den och dess förälder</h3>
 
-						<ul>
+						<!-- <ul>
 							<li class="fragment">Commit object</li>
 							<li class="fragment">Tree object</li>
 							<li class="fragment">Blob object</li>
-						</ul>
+						</ul> -->
 
 						<aside class="notes" data-markdown>
 							- Varje commit identifieras med en hash (SHA-1)
 								- som unikt identifierar den och dess förälder
 								- En commit består av:
-									- Commit object = Referens till dess förälder, dess author och commit message, samt referens till ett tree object...
+									- Commit object = Referens till dess förälder, dess author och commit message, samt referens till ett eller flera tree objects...
 									- Tree object = Vilka filer (namn och sha)
 									- Blob object = Filens innehåll
 								- ... PIL NER
@@ -187,7 +193,7 @@
 						<h2>Git</h2>
 						<ul>
 							<li class="fragment">Gör snapshots av hela repositoryn</li>
-							<li class="fragment">Om en fil inte ändrats, används en referens till den senast kända versionen</li>
+							<li class="fragment">Om en fil inte ändrats,<br />används en referens till den senaste versionen</li>
 						</ul>
 
 						<aside class="notes" data-markdown>
@@ -252,7 +258,7 @@
 						</aside>
 					</section>
 					<section>
-						<h3>Varje utcheckning är en fullständig kopia</h3>
+						<h3>Varje "utcheckning" är en fullständig kopia</h3>
 						<pre><code class="bash">git clone https://github.com/kristofferahl/FluentSecurity.git</code></pre>
 
 						<aside class="notes" data-markdown>
@@ -590,6 +596,7 @@ git log --oneline --graph --decorate</code></pre>
 						<h2>8. checkout</h2>
 
 <pre><code class="bash">git checkout &lt;branch&gt;
+git checkout &lt;path&gt;
 git checkout -b &lt;branch&gt;
 git checkout -b &lt;branch&gt; &lt;start-point&gt;</code></pre>
 
@@ -677,7 +684,7 @@ git pull &lt;remote&gt; &lt;branch&gt;</code></pre>
 				</section>
 
 				<section>
-					<h2 class="c1">Advanced stuff</h2>
+					<h2 class="c1">Even more git</h2>
 
 					<div style="line-height: 1.1em;" data-markdown>
 					- .gitignore

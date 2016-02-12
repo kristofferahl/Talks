@@ -1,8 +1,8 @@
-# Gitflow - Bringing order to chaos
+# Git from the ground up
 
-This is the [reveal.js](http://lab.hakim.se/reveal-js/) slides for my presentation on Git and Gitflow. The slides are in Swedish!
+This is the [reveal.js](http://lab.hakim.se/reveal-js/) slides for my presentation on Git. The slides are in Swedish!
 
-The images used are either licensed under Creative Commons, taken from the original Gitflow blogpost by Vincent Driessen or made by me.
+The images used are licensed under Creative Commons.
 
 ## Links
 - [A successful branching model](http://nvie.com/posts/a-successful-git-branching-model/)
@@ -22,9 +22,12 @@ There are two options:
 
 ### Full setup
 
-See the [readme.md](reveal.js/README.md) file for reveal.js
+Go to the reveal.js directory and run the following commands:
+
+	npm install
+	npm run start:presenter
 
 ## Contact
 Kristoffer Ahl
-Twitter: http://twitter.com/kristofferahl  
+Twitter: http://twitter.com/kristofferahl
 Website: http://www.77dynamite.com/
