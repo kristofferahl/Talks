@@ -17,7 +17,7 @@ The images used are licensed under Creative Commons.
 There are two options:
 
 1. Clone the repository and open the index.html page in a browser
-2. [View the presentation online](https://rawgithub.com/kristofferahl/Talks.Gitflow/master/reveal.js/index.html).
+2. [View the presentation online](https://rawgithub.com/kristofferahl/Talks.GitFromTheGroundUp/master/reveal.js/index.html).
    Hitting the spacebar will take you to the next slide!
 
 ### Full setup
